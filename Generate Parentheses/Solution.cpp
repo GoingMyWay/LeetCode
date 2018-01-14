@@ -1,16 +1,21 @@
+#include <string>
+#include <vector>
+using namespace std;
+
 class Solution {
 public:
     vector<string> generateParenthesis(int n) {
-        vector<string> res;
-        addParan(res, "", n, 0);
-        return res;
+        vector<string> result;
+        addingPar(result, "", n, n, n);
+        return result;
     }
-    void addParan(vector<string> &res, string s, int n, int m) {
-        if (n ==0 && m == 0) {
-            res.push_back(s);
+    void addingPar(vector<string> &v, string str, int n, int left, int right){
+        if ( left==0 && right==0 ) {
+            v.push_back(str);
             return;
         }
-        if ( m > 0 ) { addParan(res, s+")", n, m-1); }
-        if ( n > 0 ) { addParan(res, s+"(", n-1, m+1); }
+        
+        if ( left > 0 ) { addingPar(v, str+"(", n, left-1, right); }
+        if ( n-left > n-right ) { addingPar(v, str+")", n, left, right-1); }
     }
 };
