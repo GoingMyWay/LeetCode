@@ -5,16 +5,16 @@ class Solution(object):
         :rtype: List[str]
         """
         result = []
-        self.add_paran(result, '', left=n, right=0)
+        self.add_paran(result, '', n, left=n, right=n)
         return result
 
-    def add_paran(self, result, s_str, left, right):
+    def add_paran(self, result, s_str, n,  left, right):
         if left == 0 and right == 0:
             result.append(s_str)
             return
 
-        if right > 0:
-            self.add_paran(result, s_str + ')', left, right - 1)
         if left > 0:
-            self.add_paran(result, s_str + '(', left - 1, right + 1)
+            self.add_paran(result, s_str + '(', n, left - 1, right)
+        if n-left > n-right:
+            self.add_paran(result, s_str + ')', n, left, right - 1)
 
