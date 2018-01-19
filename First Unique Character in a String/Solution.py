@@ -8,7 +8,7 @@ class Solution(object):
         for index, v in enumerate(s):
             index_map[v] = index
         
-        for v in s:
+        for idx, v in enumerate(s):
             if hash_map[v] == 1:
-                return index_map[v]
+                return idx
         return -1
