@@ -6,8 +6,7 @@ public:
         sort(citations.begin(), citations.end(), greater<int>());
         int i = 0;
         while ( i < citations.size() ) {
-            if ((i+1 == citations[i]) || 
-                ( i < citations.size()-1 && citations[i] > i+1 && i+2 > citations[i+1] )) { return i+1; }
+            if ( citations[i] < i+1 ) { return i; }
             i ++;
         }
         return i;

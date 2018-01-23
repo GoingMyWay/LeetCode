@@ -8,7 +8,6 @@ class Solution(object):
             return 0
         citations = sorted(citations, reverse=True)
         for idx, v in enumerate(citations):
-            if (idx+1 == v) or (idx < len(citations) - 1 and v > idx+1 and idx+2 > citations[idx+1]):
-                return idx + 1
+            if v < idx + 1: return idx
         return idx + 1
 
