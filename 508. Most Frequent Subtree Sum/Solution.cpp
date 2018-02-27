@@ -37,10 +37,10 @@ public:
     }
     
     int nodeSum(TreeNode * node) {
-        if ( NULL == node->left && NULL == node->right ) {
-            return node->val;
+        if ( NULL == node ) {
+            return 0;
         } else {
-            return node->val + (NULL!=node->left ? nodeSum(node->left):0) + (NULL!=node->right ? nodeSum(node->right):0);
+            return node->val + nodeSum(node->left) + nodeSum(node->right);
         }
     }
 };
