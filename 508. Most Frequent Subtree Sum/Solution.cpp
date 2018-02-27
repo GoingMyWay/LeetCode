@@ -44,4 +44,29 @@ public:
         }
     }
 };
-
+class Solution2 {
+public:
+    vector<int> findFrequentTreeSum(TreeNode* root) {
+        unordered_map<int, int> hashMap;
+        vector<int> result;
+        int maxCount = 0;
+        
+        nodeSum(root, hashMap, maxCount);
+        for ( auto it: hashMap ) {
+            if ( maxCount == it.second ) result.push_back(it.first);
+        }
+        return result;
+    }
+    
+    int nodeSum(TreeNode * node, unordered_map<int, int> & Map, int & cnt) {
+        if ( NULL == node ) {
+            return 0;
+        } else {
+            int left = nodeSum(node->left, Map, cnt);
+            int right = nodeSum(node->right, Map, cnt);
+            int res = left + right + node->val;
+            cnt = max(cnt, ++Map[res]);
+            return res;
+        }
+    }
+};
