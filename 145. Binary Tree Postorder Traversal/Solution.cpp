@@ -39,3 +39,24 @@ public:
         return result;
     }
 };
+
+class Solution2 {
+public:
+    vector<int> postorderTraversal(TreeNode* root) {
+        vector<int> result;
+        stack<TreeNode*> s;
+        TreeNode * p = root;
+
+        while ( !s.empty() || p ) {
+            if ( p ) {
+                s.push(p);
+                result.insert(result.begin(), p->val);
+                p = p->right;
+            } else {
+                p = s.top(); s.pop();
+                p = p->left;
+            }
+        }
+        return result;
+    }
+};
