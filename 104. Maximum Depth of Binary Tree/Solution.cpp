@@ -15,7 +15,8 @@ public:
         // return answer;
         return visitTree(root);
     }
-    
+
+    // Top-Down recursion
     void visitTree(TreeNode * root, int depth) {
         if ( !root ) return;
         if ( !root->left && !root->right ) answer = max(answer, depth);
@@ -25,6 +26,7 @@ public:
         }
     }
 
+    // Bottom-Up Recursion
     int visitTree(TreeNode * root) {
         if ( !root ) return 0;
         int left_depth = visitTree(root->left);
