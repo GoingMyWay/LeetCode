@@ -12,7 +12,8 @@ public:
     int answer = 0;
     int maxDepth(TreeNode* root) {
         visitTree(root, 1);
-        return answer;
+        // return answer;
+        return visitTree(root);
     }
     
     void visitTree(TreeNode * root, int depth) {
@@ -22,6 +23,13 @@ public:
             visitTree(root->left, depth + 1);
             visitTree(root->right, depth + 1);
         }
+    }
+
+    int visitTree(TreeNode * root) {
+        if ( !root ) return 0;
+        int left_depth = visitTree(root->left);
+        int right_depth = visitTree(root->right);
+        return max(left_depth, right_depth) + 1;
     }
 };
 
