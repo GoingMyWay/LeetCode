@@ -33,5 +33,23 @@ public:
         int right_depth = visitTree(root->right);
         return max(left_depth, right_depth) + 1;
     }
+
+    // Bredth-Frist traversal
+    int bredthFirst( TreeNode * root ) {
+        queue<TreeNode *> q;
+        q.push(root);
+        int result = 0;
+        
+        while ( !q.empty() && root != NULL ) {
+            result ++;
+            int qsize = q.size();
+            for ( int i = 0; i < qsize; i ++ ) {
+                root = q.front(); q.pop();
+                if ( root->left ) q.push(root->left);
+                if ( root->right ) q.push(root->right);
+            }
+        }
+        return result;
+    }
 };
 
