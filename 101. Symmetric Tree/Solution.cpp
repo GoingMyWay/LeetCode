@@ -21,3 +21,22 @@ public:
             && isMirror(left->right, right->left);
     }
 };
+
+class Solution2 {
+public:
+    bool isSymmetric(TreeNode* root) {
+        queue<TreeNode *> q;
+        q.push(root); q.push(root);
+        while ( !q.empty() ) {
+            TreeNode * left = q.front(); q.pop();
+            TreeNode * right = q.front(); q.pop();
+            if ( !left && !right ) continue;
+            if ( (!left || !right) || (left->val != right->val) ) return false;
+            q.push(left->left);
+            q.push(right->right);
+            q.push(left->right);
+            q.push(right->left);
+        }
+        return true;
+    }
+};
