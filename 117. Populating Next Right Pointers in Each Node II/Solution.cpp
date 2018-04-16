@@ -65,7 +65,7 @@ public:
                 }
                 curr = curr->next; // go to the next level
             }
-            curr = head;
+            curr = head; // the left-most node of the next level
             prev = NULL;
             head = NULL;
         }
