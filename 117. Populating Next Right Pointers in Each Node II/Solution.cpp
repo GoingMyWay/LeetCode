@@ -42,6 +42,35 @@ public:
             prev = this->getNextLevelFirstNode(prev);
         }
     }
+
+    
+    // A much more elegent solution
+    void connect2(TreeLinkNode *root) {
+        if ( !root ) return;
+        TreeLinkNode * curr = root;
+        TreeLinkNode * prev = NULL;
+        TreeLinkNode * head = NULL;
+        while ( curr ) {
+            while ( curr ){
+                if ( curr->left ) { // left 
+                    if ( prev ) prev->next = curr->left;
+                    else head = curr->left;
+                    prev = curr->left;
+                }
+                    
+                if ( curr->right ) { // right
+                    if ( prev ) prev->next = curr->right;
+                    else head = curr->right;
+                    prev = curr->right;
+                }
+                curr = curr->next; // go to the next level
+            }
+            curr = head;
+            prev = NULL;
+            head = NULL;
+        }
+    }
+    
     
     bool hasNextLevel(TreeLinkNode *root) {
         while ( root ) {
