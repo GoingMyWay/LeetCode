@@ -8,7 +8,7 @@
  */
 class Solution {
 public:
-	// Bredth-First Search Method + Queue
+    // Bredth-First Search Method + Queue
     void connect1(TreeLinkNode *root) {
         if ( !root ) return;
         queue<TreeLinkNode*> q; q.push(root);
@@ -26,7 +26,7 @@ public:
         }
     }
     
-	// iterative method constant extra memory
+    // iterative method constant extra memory
     void connect(TreeLinkNode *root) {
         if ( !root ) return;
         TreeLinkNode * prev = root;
