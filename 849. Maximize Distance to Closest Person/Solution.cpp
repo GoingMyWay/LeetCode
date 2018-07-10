@@ -9,7 +9,7 @@ public:
                 if (seats[l] == 0) res = r - l;
                 else {
                     if ((r-l-1) % 2 == 0) dist = (r-l-1) / 2;
-                    else dist = (r - l) / 2;
+                    else dist = (r-l) / 2;
                     
                     if (dist > res) res = dist;              
                 }

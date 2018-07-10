@@ -10,16 +10,13 @@ class Solution(object):
                 r += 1
             elif v == 1:
                 r = i
-                if seats[l] == 0:
+                if seats[l] == 0:  # if starts with zero
                     res = r - l
-                else:
-                    if (r-l-1) % 2 == 0:
-                        temp = (r-l-1) / 2
-                    else:
-                        temp = (r-l) / 2
+                else: 
+                    temp = (r-l-1) / 2 if (r-l-1) % 2 == 0 else (r-l) / 2 # odd or even
+                    
                     if temp > res:
                         res = temp
-                l, r = i, i
+                l = i
 
-        return res if res > r-l else r-l
-
+        return res if res > r-l else r-l  # if starts with 1 and ends with zero
