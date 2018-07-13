@@ -22,3 +22,22 @@ public:
     }
     
 };
+
+
+class Solution2 {
+public:
+    vector<int> preorderTraversal(TreeNode* root) {
+        stack<TreeNode*> s; s.push(root);
+        vector<int> result;
+        
+        while (!s.empty() && root) {
+            TreeNode * node = s.top(); s.pop();
+            result.push_back(node->val);
+            if (node->right) s.push(node->right);
+            if (node->left) s.push(node->left);
+        }
+        return result;
+    }
+};
+
+
