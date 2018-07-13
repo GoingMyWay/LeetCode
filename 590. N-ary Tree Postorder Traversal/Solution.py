@@ -6,7 +6,7 @@ class Node(object):
         self.children = children
 """
 class Solution(object):
-    def postorder(self, root):
+    def postorder2(self, root):
         """
         :type root: Node
         :rtype: List[int]
@@ -18,5 +18,17 @@ class Solution(object):
                 vec.extend(self.postorder(child))
             result.extend(vec)
             result.append(root.val)
+        return result
+
+    def postorder(self, root):
+        """
+        :type root: Node
+        :rtype: List[int]
+        """
+        stack, result = [root], []
+        while len(stack) != 0 and root is not None:
+            n = stack.pop()
+            result.insert(0, n.val)
+            stack += n.children
         return result
 
