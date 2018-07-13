@@ -15,7 +15,7 @@ public:
 */
 class Solution {
 public:
-    vector<int> preorder(Node* root) {
+    vector<int> preorder2(Node* root) {
         vector<int> result;
         visit(result, root);
         return result;
@@ -27,6 +27,20 @@ public:
             res.push_back(node->val);
             for (auto & ch : node->children) visit(res, ch);
         }
+    }
+    
+    vector<int> preorder(Node* root) {
+        vector<int> result, res;
+        if (root) {
+            res.push_back(root->val);
+            vector<int> vec;
+            for (auto child : root->children) {
+                vec = preorder(child);
+                res.insert(res.end(), vec.begin(), vec.end());
+            }
+            result.insert(result.end(), res.begin(), res.end());
+        }
+        return result;
     }
 };
 

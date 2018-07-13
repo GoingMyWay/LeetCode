@@ -6,7 +6,7 @@ class Node(object):
         self.children = children
 """
 class Solution(object):
-    def preorder(self, root):
+    def preorder2(self, root):
         """
         :type root: Node
         :rtype: List[int]
@@ -20,4 +20,18 @@ class Solution(object):
             result.append(root.val)
             for ch in root.children:
                 self._visit(result, ch)
+    
+    def preorder(self, root):
+        """
+        :type root: Node
+        :rtype: List[int]
+        """
+        result, res = [], []
+        if root is not None:
+            res.append(root.val)
+            for child in root.children: 
+                vec = self.preorder(child)
+                res.extend(vec)
+            result.extend(res)
+        return result
 
