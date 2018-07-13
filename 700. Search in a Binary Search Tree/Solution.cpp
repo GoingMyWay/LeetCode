@@ -9,11 +9,22 @@
  */
 class Solution {
 public:
-    TreeNode* searchBST(TreeNode* root, int val) {
+    TreeNode* searchBST2(TreeNode* root, int val) {
         if (!root) return NULL;
         else if (root->val == val) return root;
         else if (root->val > val) return searchBST(root->left, val);
         else return searchBST(root->right, val);
     }
+
+    TreeNode* searchBST(TreeNode* root, int val) {
+        stack<TreeNode*> s; s.push(root);
+        while (!s.empty() && root) {
+            TreeNode* n = s.top(); s.pop();
+            if (n == NULL) return NULL;
+            else if (n->val == val) return n;
+            else if (n->val > val) s.push(n->left);
+            else s.push(n->right);
+        }
+        return NULL;
 };
 
