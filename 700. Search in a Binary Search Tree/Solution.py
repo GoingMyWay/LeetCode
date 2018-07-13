@@ -17,7 +17,7 @@ class Solution(object):
         elif root.val > val: return self.searchBST(root.left, val);
         else: return self.searchBST(root.right, val)
 
-    def searchBST(self, root, val):
+    def searchBST3(self, root, val):
         stack = [root]
         while len(stack) != 0 and root is not None:
             node = stack.pop()
@@ -29,5 +29,16 @@ class Solution(object):
                 stack.append(node.left)
             else:
                 stack.append(node.right)
+        return None
+
+    def searchBST1(self, root, val):
+        node = root
+        while node is not None:
+            if node.val == val:
+                return node
+            elif node.val > val:
+                node = node.left
+            else:
+                node = node.right
         return None
 

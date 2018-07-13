@@ -16,7 +16,7 @@ public:
         else return searchBST(root->right, val);
     }
 
-    TreeNode* searchBST(TreeNode* root, int val) {
+    TreeNode* searchBST3(TreeNode* root, int val) {
         stack<TreeNode*> s; s.push(root);
         while (!s.empty() && root) {
             TreeNode* n = s.top(); s.pop();
@@ -26,5 +26,16 @@ public:
             else s.push(n->right);
         }
         return NULL;
+    }
+    
+    TreeNode* searchBST(TreeNode* root, int val) {
+        TreeNode* node = root;
+        while (node) {
+            if (node->val == val) return node;
+            else if (node->val > val) node = node->left;
+            else node = node->right;
+        }
+        return NULL;
+    }
 };
 
