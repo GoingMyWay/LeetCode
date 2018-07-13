@@ -17,3 +17,20 @@ class Solution(object):
             result.extend(self.preorderTraversal(root.left))
             result.extend(self.preorderTraversal(root.right))
         return result
+
+
+class Solution2(object):
+    def preorderTraversal(self, root):
+        """
+        :type root: TreeNode
+        :rtype: List[int]
+        """
+        stack, result = [root], []
+        while len(stack) != 0 and root != None:
+            n = stack.pop()
+            result.append(n.val)
+            if n.right != None: stack.append(n.right)
+            if n.left != None: stack.append(n.left)
+    
+        return result
+
