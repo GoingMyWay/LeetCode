@@ -15,7 +15,7 @@ public:
 */
 class Solution {
 public:
-    vector<int> postorder(Node* root) {
+    vector<int> postorder2(Node* root) {
         vector<int> result, vec, temp;
         if (root) {
             for (auto child : root->children) {
@@ -24,6 +24,17 @@ public:
             }
             result.insert(result.end(), vec.begin(), vec.end());
             result.push_back(root->val);
+        }
+        return result;
+    }
+    
+    vector<int> postorder(Node* root) {
+        stack<Node*> s; s.push(root);
+        vector<int> result;
+        while (!s.empty() && root) {
+            Node * n = s.top(); s.pop();
+            result.insert(result.begin(), n->val);
+            for (auto child : n->children) s.push(child);
         }
         return result;
     }
