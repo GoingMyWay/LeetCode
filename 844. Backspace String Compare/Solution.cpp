@@ -1,6 +1,6 @@
 class Solution {
 public:
-    bool backspaceCompare(string S, string T) {
+    bool backspaceCompare2(string S, string T) {
         stack<char> s1, s2;
         for (auto & s: S) {
             if (s != '#') s1.push(s);
@@ -16,6 +16,28 @@ public:
             s1.pop(); s2.pop();
         }
         return 1;
+    }
+
+    bool backspaceCompare(string S, string T) {
+        string r1 = stringBuilder(S);
+        string r2 = stringBuilder(T);
+        if (r1.size() != r2.size()) return false;
+        for (int j = 0; j < r1.size(); j ++) {
+            if (r1[j] != r2[j]) return false;
+        }
+        return true;
+    }
+    
+    string stringBuilder(string inputStr) {
+        int j = inputStr.size(), skip = 0;
+        string res = "";
+        while (j >= 0) {
+            if (inputStr[j] == '#') skip ++;
+            else if (skip != 0) skip --;
+            else res += inputStr[j];
+            j --;
+        }
+        return res;
     }
 };
 

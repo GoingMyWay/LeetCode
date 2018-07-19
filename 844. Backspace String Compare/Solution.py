@@ -1,5 +1,5 @@
 class Solution(object):
-    def backspaceCompare(self, S, T):
+    def backspaceCompare2(self, S, T):
         """
         :type S: str
         :type T: str
@@ -19,4 +19,21 @@ class Solution(object):
                 s2.pop();
 
         return ''.join(s1) == ''.join(s2)
+
+    def backspaceCompare(self, S, T):
+        """
+        :type S: str
+        :type T: str
+        :rtype: bool
+        """
+        def f(input_str):
+            skip = 0
+            for s in reversed(input_str):
+                if s == '#':
+                    skip += 1
+                elif skip != 0:
+                    skip -= 1
+                else:
+                    yield s
+        return all(x == y for x, y in itertools.izip_longest(f(S), f(T)))
 
