@@ -1,4 +1,4 @@
-# MyLeetCode
+# LeetCode
 Problems I solved on LeetCode.com, updating...
 
 
