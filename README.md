@@ -1,7 +1,7 @@
 # LeetCode
 🛠 Problems I solved on LeetCode.com, updating...
 
-Language
+Languages
 
 1. CPP
 2. Python3
