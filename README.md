@@ -7,3 +7,7 @@ Languages
 2. Python3
 3. Java
 4. C
+
+Dependencies:
+
+I use to [leetcode-export](https://github.com/NeverMendel/leetcode-export) export LeetCode submissions.
