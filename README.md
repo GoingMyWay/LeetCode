@@ -1,10 +1,10 @@
 # LeetCode
 🛠 Problems I solved on LeetCode.com, updating...
 
-Languages
+Languages:
 
-1. CPP
-2. Python3
+1. C++
+2. Python
 3. Java
 4. C
 
