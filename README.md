@@ -10,4 +10,4 @@ Languages
 
 Dependencies:
 
-I use to [leetcode-export](https://github.com/NeverMendel/leetcode-export) export LeetCode submissions.
+I use [leetcode-export](https://github.com/NeverMendel/leetcode-export) to export LeetCode submissions.
