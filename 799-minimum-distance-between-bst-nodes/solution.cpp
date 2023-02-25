@@ -11,8 +11,20 @@
  */
 class Solution {
 public:
-    int maxDepth(TreeNode* root) {
-        if (root == nullptr) return 0;
-        return max(maxDepth(root->left), maxDepth(root->right)) + 1;
+    int minDiffInBST(TreeNode* root) {
+        prev = nullptr;
+        dfs(root);
+        return res;
+    }
+
+private:
+    TreeNode * prev;
+    int res = INT_MAX;
+    void dfs(TreeNode* root) {
+        if (!root) return;
+        dfs(root->left);
+        if (prev) res = min(res, abs(root->val - prev->val));
+        prev = root;
+        dfs(root->right);
     }
 };

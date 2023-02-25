@@ -1,10 +1,10 @@
-class Solution(object):
-    def maxProfit(self, prices):
+class Solution:
+    def maxProfit(self, prices: List[int]) -> int:
         """
         :type prices: List[int]
         :rtype: int
         """
-        min_price = sys.maxint
+        min_price = sys.maxsize
         max_profit = 0
         for v in prices:
             if v <= min_price:
