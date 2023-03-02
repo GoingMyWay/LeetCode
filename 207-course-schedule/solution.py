@@ -13,14 +13,14 @@ class Solution:
 
         return not self.cycle
 
-    def build_graph(self, numCourses, prerequisites):
+    def build_graph(self, numCourses: int, prerequisites: List[List[int]]) -> List[List[int]]:
         graphs = [list() for _ in range(numCourses)]
         for edge in prerequisites:
             _from, _to = edge[1], edge[0]
             graphs[_from].append(_to)
         return graphs
 
-    def dfs(self, src):
+    def dfs(self, src: int) -> None:
         if self.onpath[src]:
             self.cycle = True
         

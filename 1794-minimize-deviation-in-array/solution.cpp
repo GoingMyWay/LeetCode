@@ -14,8 +14,7 @@ public:
         }
         int minDeviation = INT_MAX;
         while (!evens.empty()) {
-            int currentValue = evens.top();
-            evens.pop();
+            int currentValue = evens.top(); evens.pop();
             minDeviation = min(minDeviation, currentValue - minimum);
             if (currentValue % 2 == 0) {
                 evens.push(currentValue / 2);
