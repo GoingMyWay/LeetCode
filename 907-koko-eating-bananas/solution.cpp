@@ -15,18 +15,12 @@ public:
         return left;
     }
 
-    // 定义：速度为 x 时，需要 f(x) 小时吃完所有香蕉
-    // f(x) 随着 x 的增加单调递减
-    int f(vector<int>& piles, int x) {
+private:
+    int f(vector<int>& piles, int candidateK) {
         int hours = 0;
         for (int i = 0; i < piles.size(); i++) {
-            hours += piles[i] / x;
-            if (piles[i] % x > 0) {
-                hours++;
-            }
+            hours += piles[i] / candidateK + (int)(piles[i] % candidateK > 0);
         }
         return hours;
     }
 };
-
-
