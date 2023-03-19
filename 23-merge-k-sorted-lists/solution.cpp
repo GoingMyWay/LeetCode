@@ -8,34 +8,34 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
+
 class Solution {
 public:
     ListNode* mergeKLists(vector<ListNode*>& lists) {
-        if (lists.empty()) return NULL;
-        int n = lists.size();
-        while (n > 1) {
-            int k = (n + 1) / 2;
-            for (int i = 0; i < n / 2; ++i) {
-                lists[i] = mergeTwoLists(lists[i], lists[i + k]);
-            }
-            n = k;
+        int size = lists.size();
+        ListNode * dummy = new ListNode(-1);
+        ListNode * p = dummy;
+        priority_queue<ListNode*, vector<ListNode*>, compare> pq;
+        for (auto head: lists) {
+            if (head) pq.push(head);
         }
-        return lists[0];
-    }
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
-        ListNode *dummy = new ListNode(-1), *cur = dummy;
-        while (l1 && l2) {
-            if (l1->val < l2->val) {
-                cur->next = l1;
-                l1 = l1->next;
-            } else {
-                cur->next = l2;
-                l2 = l2->next;
+        
+        while (pq.size() > 0) {
+            auto node = pq.top(); pq.pop();
+            p->next = node;
+            if (node->next) {
+                pq.push(node->next);
             }
-            cur = cur->next;
+            p = node; // or p = p->next;
         }
-        if (l1) cur->next = l1;
-        if (l2) cur->next = l2;
         return dummy->next;
     }
+
+private:
+    // 自定义比较函数
+    struct compare {
+        bool operator() (ListNode * a, ListNode * b) {
+            return a->val > b->val;
+        }
+    };
 };

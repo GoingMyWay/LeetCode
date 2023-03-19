@@ -8,12 +8,13 @@
  */
 class Solution {
 public:
-    ListNode* middleNode(ListNode* head) {
+    bool hasCycle(ListNode *head) {
         ListNode * fast = head, * slow = head;
         while (fast && fast->next) {
             slow = slow->next;
             fast = fast->next->next;
+            if (slow == fast) return true;
         }
-        return slow;
+        return false;
     }
 };

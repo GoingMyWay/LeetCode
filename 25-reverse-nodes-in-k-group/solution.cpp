@@ -41,19 +41,19 @@ public:
             if (!curr) return head;
             curr = curr->next;
         }
-        ListNode* new_head = reverse(head, curr);
+        ListNode* newHead = reverse(head, curr);
         head->next = reverseKGroup(curr, k);
-        return new_head;
+        return newHead;
     }
     
     ListNode* reverse(ListNode* head, ListNode* tail_next) {
-        ListNode* left = tail_next;
-        while (head != tail_next) {
-            ListNode * right = head->next;
-            head->next = left;
-            left = head;
-            head = right;
+        ListNode * prev = nullptr, * curr = head, * next = head;
+        while (curr != tail_next) {
+            next = curr->next;
+            curr->next = prev;
+            prev = curr;
+            curr = next;
         }
-        return left;
-    }  
+        return prev;
+    }
 };
