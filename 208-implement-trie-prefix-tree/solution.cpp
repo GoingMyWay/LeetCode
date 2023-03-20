@@ -12,7 +12,6 @@ public:
     vector<TrieNode*> children;
 };
 
-
 // 底层用 Trie 树实现的键值映射
 // 键为 string 类型，值为类型 T
 template<class T>
@@ -26,7 +25,7 @@ public:
     /***** 增/改 *****/
 
     // 在 Map 中添加 key
-    void put(string key, T val) {
+    void put(string & key, T val) {
         if (!containsKey(key)) {
             // 新增键值对
             _size ++;
@@ -36,7 +35,7 @@ public:
     }
 
     // 定义：向以 node 为根的 Trie 树中插入 key[i..]，返回插入完成后的根节点
-    TrieNode<T> * put(TrieNode<T> * node, string key, T val, int i) {
+    TrieNode<T> * put(TrieNode<T> * node, string & key, T val, int i) {
         if (node == nullptr) {
             // 如果树枝不存在，新建
             node = new TrieNode<T>();
@@ -48,7 +47,6 @@ public:
         }
         char c = key[i];
         if (checkBound()) c = c - 'a';
-        int ttt = (int)c;
         // 递归插入子节点，并接收返回值
         node->children[(int)c] = put(node->children[(int)c], key, val, i + 1);
         return node;
@@ -57,7 +55,7 @@ public:
     /***** 删 *****/
 
     // 删除键 key 以及对应的值
-    void remove(string key) {
+    void remove(string & key) {
         if (!containsKey(key)) {
             return;
         }
@@ -67,7 +65,7 @@ public:
     }
 
     // 定义：在以 node 为根的 Trie 树中删除 key[i..]，返回删除后的根节点
-    TrieNode<T> * remove(TrieNode<T> * node, string& key, int i) {
+    TrieNode<T> * remove(TrieNode<T> * node, string & key, int i) {
         if (node == nullptr) {
             return nullptr;
         }
@@ -100,7 +98,7 @@ public:
     // 搜索 key 对应的值，不存在则返回 null
     // get("the") -> 4
     // get("tha") -> null
-    T get(string key) {
+    T get(string & key) {
         TrieNode<T> * x = getNode(root, key);
         if (x == nullptr || x->val == T()) {
             return T();
@@ -127,13 +125,13 @@ public:
     // 判断 key 是否存在在 Map 中
     // containsKey("tea") -> false
     // containsKey("team") -> true
-    bool containsKey(string key) {
+    bool containsKey(string & key) {
         return get(key) != T();
     }
 
     // 在 Map 的所有键中搜索 query 的最短前缀
     // shortestPrefixOf("themxyz") -> "the"
-    string shortestPrefixOf(string query) {
+    string shortestPrefixOf(string & query) {
         TrieNode<T> * p = root;
         // 从节点 node 开始搜索 key
         for (int i = 0; i < query.length(); i++) {
@@ -160,7 +158,7 @@ public:
 
     // 在 Map 的所有键中搜索 query 的最长前缀
     // longestPrefixOf("themxyz") -> "them"
-    string longestPrefixOf(string query) {
+    string longestPrefixOf(string & query) {
         TrieNode<T> * p = root;
         // 记录前缀的最大长度
         int maxLen = 0;
@@ -187,7 +185,7 @@ public:
 
     // 搜索所有前缀为 prefix 的键
     // keysWithPrefix("th") -> ["that", "the", "them"]
-    vector<string> keysWithPrefix(string prefix) {
+    vector<string> keysWithPrefix(string & prefix) {
         vector<string> res;
         // 找到匹配 prefix 在 Trie 树中的那个节点
         TrieNode<T>* x = getNode(root, prefix);
@@ -223,14 +221,14 @@ public:
     // 判断是和否存在前缀为 prefix 的键
     // hasKeyWithPrefix("tha") -> true
     // hasKeyWithPrefix("apple") -> false
-    bool hasKeyWithPrefix(string prefix) {
+    bool hasKeyWithPrefix(string & prefix) {
         // 只要能找到一个节点，就是存在前缀
         return prefix.size() > 0 && getNode(root, prefix) != nullptr;
     }
 
     // 通配符 . 匹配任意字符，搜索所有匹配的键
     // keysWithPattern("t.a.") -> ["team", "that"]
-    vector<string> keysWithPattern(string pattern) {
+    vector<string> keysWithPattern(string & pattern) {
         vector<string> res;
         string path = "";
         traverse(root, path, pattern, 0, res);
@@ -272,7 +270,7 @@ public:
     // 通配符 . 匹配任意字符，判断是否存在匹配的键
     // hasKeyWithPattern(".ip") -> true
     // hasKeyWithPattern(".i") -> false
-    bool hasKeyWithPattern(string pattern) {
+    bool hasKeyWithPattern(string & pattern) {
         return hasKeyWithPattern(root, pattern, 0);
     }
 
