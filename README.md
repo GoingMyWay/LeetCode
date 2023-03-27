@@ -1,5 +1,5 @@
 # LeetCode
-🛠 Problems I solved on LeetCode.com, updating...
+🛠 I solved over 500 LeetCode questions and most of them were solved with C++.
 
 Languages:
 
