@@ -61,13 +61,14 @@ public:
             }
         }
 
-        vector<int> numofEachComponent = uf.getNumofEachComponent();
-        int res = 0;
-        for (auto v : numofEachComponent) {
-            if (v == 0 || v == 1) continue;
-            res += v - 1;
-        }
-        return res;
+        // vector<int> numofEachComponent = uf.getNumofEachComponent();
+        // int res = 0;
+        // for (auto v : numofEachComponent) {
+        //     if (v == 0 || v == 1) continue;
+        //     res += v - 1;
+        // }
+        // return res;
+        return n - uf.getNComponent();
     }
 
 private:

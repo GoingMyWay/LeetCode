@@ -10,6 +10,23 @@
  */
 
 class Solution {
+
+// public:
+//     bool isPalindrome(ListNode* head) {
+//         left = head;
+//         return traverse(head);
+//     }
+
+// private:
+//     ListNode * left;
+//     bool traverse(ListNode* right) {
+//         if (right == nullptr) return true;
+//         bool res = traverse(right->next);
+//         res = res && (left->val == right->val);
+//         left = left->next;
+//         return res;
+//     }
+
 public:
     bool isPalindrome(ListNode* head) {
         ListNode *slow, *fast;   // Define two pointers
@@ -33,18 +50,19 @@ public:
             right = right->next;         // Move the right pointer one step
         }
 
-        // Return true if all elements in the list are equal to their corresponding elements in the reversed list
         return true;
     }
 
+private:
     ListNode* reverse(ListNode* head) {
-        ListNode *pre = nullptr, *cur = head;   // Define two pointers
-        while (cur != nullptr) {   // Loop until the last node of the list is reached
-            ListNode *next = cur->next;    // Store the next pointer temporarily
-            cur->next = pre;               // Reverse the pointer
-            pre = cur;                     // Move the pre pointer one step
-            cur = next;                    // Move the cur pointer one step forward
+        ListNode * pre = nullptr;
+        ListNode * cur = head;
+        while (cur != nullptr) {
+            ListNode * next = cur->next;
+            cur->next = pre;
+            pre = cur;
+            cur = next;
         }
-        return pre;            // Return the new head
+        return pre;
     }
 };
