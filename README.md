@@ -1,7 +1,7 @@
 # LeetCode
 🛠 I solved over 500 LeetCode questions and most of them were solved with C++.
 
-<img src="https://user-images.githubusercontent.com/9346460/228109656-05ffdf13-7414-4564-8b91-c811fff428cc.png"  width="600" height="270">
+<img src="https://user-images.githubusercontent.com/9346460/233530427-40a021ea-1dd2-4ab9-9e8d-313cb5cb2079.png"  width="600" height="270">
 
 Languages:
 
